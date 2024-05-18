@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* copy scrollbar from w3school and do some modification*/
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    /* box-shadow: inset 0 0 5px grey;
+    border-radius: 10px; */
+    background-color: #0A192F;
+
+}
+
+i {
+    cursor: pointer;
+}
+
+i:hover {
+    color: rgb(249, 115, 22);
+    font-weight: bold;
+
+}
+
+/* loader animation */
+.m {
+    animation: m 2s infinite;
+}
+
+@keyframes m {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0.1;
+    }
+
+}
+
+.s {
+    animation: s 2s infinite;
+}
+
+@keyframes s {
+
+    0% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+
+}
+
+.d {
+    animation: d 2s infinite;
+}
+
+@keyframes d {
+
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
