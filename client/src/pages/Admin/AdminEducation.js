@@ -1,8 +1,8 @@
 import { Button, Form, Input, Modal, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { HideLoading, ReloadData, ShowLoading } from '../../redux/rootSlice';
-import axios from 'axios';
 import React, { useState } from 'react';
+import loginInstance from '../../util/loginInstance';
 
 const AdminEducation = () => {
     const dispatch = useDispatch();
@@ -20,12 +20,12 @@ const AdminEducation = () => {
             dispatch(ShowLoading());
             let response;
             if (selectedItemForEdit) {
-                response = await axios.post("/api/portfolio/update-education", {
+                response = await loginInstance.post("/api/portfolio/update-education", {
                     ...values,
                     _id: selectedItemForEdit._id,
                 });
             } else {
-                response = await axios.post("/api/portfolio/add-education", values);
+                response = await loginInstance.post("/api/portfolio/add-education", values);
             }
             dispatch(HideLoading());
             if (response.data.success) {
@@ -45,7 +45,7 @@ const AdminEducation = () => {
     const onDelete = async (item) => {
         try {
             dispatch(ShowLoading());
-            const response = await axios.post("/api/portfolio/delete-education", {
+            const response = await loginInstance.post("/api/portfolio/delete-education", {
                 _id: item._id,
             });
             dispatch(HideLoading());

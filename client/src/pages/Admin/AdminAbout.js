@@ -4,8 +4,8 @@ import FormItem from 'antd/es/form/FormItem'
 import TextArea from 'antd/es/input/TextArea'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShowLoading, HideLoading } from '../../redux/rootSlice'
-import axios from "axios";
 import { message } from 'antd'
+import loginInstance from '../../util/loginInstance'
 
 const AdminAbout = () => {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const AdminAbout = () => {
             values.skills = tempskills;
 
             dispatch(ShowLoading())
-            const response = await axios.post("/api/portfolio/update-about",
+            const response = await loginInstance.post("/api/portfolio/update-about",
                 {
                     ...values,
                     _id: portfolioData.about._id,

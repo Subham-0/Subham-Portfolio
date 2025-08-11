@@ -3,8 +3,8 @@ import { Form, Input } from 'antd'
 import FormItem from 'antd/es/form/FormItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { ShowLoading, HideLoading } from '../../redux/rootSlice'
-import axios from "axios";
 import { message } from 'antd'
+import loginInstance from '../../util/loginInstance'
 
 const AdminContact = () => {
 
@@ -17,7 +17,7 @@ const AdminContact = () => {
     const onfinish = async (values) => {
         try {
             dispatch(ShowLoading())
-            const response = await axios.post("/api/portfolio/update-contact",
+            const response = await loginInstance.post("/api/portfolio/update-contact",
                 {
 
                     ...values,

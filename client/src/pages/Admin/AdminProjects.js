@@ -1,8 +1,8 @@
 import { Button, Form, Input, Modal, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { HideLoading, ReloadData, ShowLoading } from '../../redux/rootSlice';
-import axios from 'axios';
 import React, { useState } from 'react';
+import loginInstance from '../../util/loginInstance';
 
 
 
@@ -28,12 +28,12 @@ function AdminProjects() {
             dispatch(ShowLoading());
             let response;
             if (selectedItemForEdit) {
-                response = await axios.post("/api/portfolio/update-project", {
+                response = await loginInstance.post("/api/portfolio/update-project", {
                     ...values,
                     _id: selectedItemForEdit._id,
                 });
             } else {
-                response = await axios.post("/api/portfolio/add-project", {
+                response = await loginInstance.post("/api/portfolio/add-project", {
                     ...values,
                     technologies: values.technology, // Corrected key name
                 });
@@ -56,7 +56,7 @@ function AdminProjects() {
     const onDelete = async (item) => {
         try {
             dispatch(ShowLoading());
-            const response = await axios.post("/api/portfolio/delete-project", {
+            const response = await loginInstance.post("/api/portfolio/delete-project", {
                 _id: item._id,
             });
             dispatch(HideLoading());
