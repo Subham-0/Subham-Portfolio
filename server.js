@@ -7,7 +7,10 @@ const app = express();
 
 // Enable CORS for frontend requests
 app.use(cors({
-    origin: "http://localhost:3000", // Allow only your frontend
+    origin: [
+    "http://localhost:3000",              // Local dev
+    "https://client-one-phi.vercel.app"   // Production frontend
+  ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
